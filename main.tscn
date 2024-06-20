@@ -1,0 +1,82 @@
+[gd_scene load_steps=8 format=3 uid="uid://d0l3kedy2jy27"]
+
+[ext_resource type="Texture2D" uid="uid://d3swedrjt27g2" path="res://assets/Court.png" id="1_klngy"]
+[ext_resource type="Texture2D" uid="uid://drbxstepy6ptw" path="res://assets/Ball.png" id="2_q2vfw"]
+[ext_resource type="Texture2D" uid="uid://ddipyjabs68it" path="res://assets/Paddle.png" id="3_pimu3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mxd7d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vtohn"]
+size = Vector2(30, 202)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g1cgc"]
+size = Vector2(1280, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sl6bn"]
+size = Vector2(50, 720)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="Court" type="Sprite2D" parent="."]
+position = Vector2(2.08165e-12, 2.08165e-12)
+texture = ExtResource("1_klngy")
+offset = Vector2(640, 360)
+
+[node name="Ball" type="Area2D" parent="."]
+position = Vector2(640, 360)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball"]
+texture = ExtResource("2_q2vfw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+shape = SubResource("RectangleShape2D_mxd7d")
+
+[node name="Player" type="Area2D" parent="."]
+position = Vector2(80, 360)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture = ExtResource("3_pimu3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("RectangleShape2D_vtohn")
+
+[node name="Enemy" type="Area2D" parent="."]
+position = Vector2(1200, 360)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemy"]
+texture = ExtResource("3_pimu3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
+shape = SubResource("RectangleShape2D_vtohn")
+
+[node name="TopWall" type="Area2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopWall"]
+position = Vector2(640, 2.08165e-12)
+shape = SubResource("RectangleShape2D_g1cgc")
+
+[node name="BottomWall" type="Area2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomWall"]
+position = Vector2(640, 745)
+shape = SubResource("RectangleShape2D_g1cgc")
+
+[node name="LeftWall" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
+position = Vector2(2.08165e-12, 360)
+shape = SubResource("RectangleShape2D_sl6bn")
+
+[node name="RightWall" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
+position = Vector2(1280, 360)
+shape = SubResource("RectangleShape2D_sl6bn")
