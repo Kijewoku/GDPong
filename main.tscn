@@ -1,8 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://d0l3kedy2jy27"]
+[gd_scene load_steps=12 format=3 uid="uid://d0l3kedy2jy27"]
 
 [ext_resource type="Texture2D" uid="uid://d3swedrjt27g2" path="res://assets/Court.png" id="1_klngy"]
 [ext_resource type="Texture2D" uid="uid://drbxstepy6ptw" path="res://assets/Ball.png" id="2_q2vfw"]
 [ext_resource type="Texture2D" uid="uid://ddipyjabs68it" path="res://assets/Paddle.png" id="3_pimu3"]
+[ext_resource type="AudioStream" uid="uid://bodegx0rabwm2" path="res://assets/bounce.mp3" id="3_vrik4"]
+[ext_resource type="AudioStream" uid="uid://cjo8ct0c6q15e" path="res://assets/music.mp3" id="4_l8wev"]
+[ext_resource type="AudioStream" uid="uid://b6j1iccngggfg" path="res://assets/player_score.mp3" id="5_mq4b2"]
+[ext_resource type="AudioStream" uid="uid://dbelrurbd2v1p" path="res://assets/enemy_score.mp3" id="6_m81v6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mxd7d"]
 
@@ -35,6 +39,9 @@ texture = ExtResource("2_q2vfw")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
 shape = SubResource("RectangleShape2D_mxd7d")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Ball"]
+stream = ExtResource("3_vrik4")
+
 [node name="Player" type="Area2D" parent="."]
 position = Vector2(80, 360)
 metadata/_edit_group_ = true
@@ -45,6 +52,9 @@ texture = ExtResource("3_pimu3")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource("RectangleShape2D_vtohn")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource("5_mq4b2")
+
 [node name="Enemy" type="Area2D" parent="."]
 position = Vector2(1200, 360)
 metadata/_edit_group_ = true
@@ -54,6 +64,9 @@ texture = ExtResource("3_pimu3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
 shape = SubResource("RectangleShape2D_vtohn")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Enemy"]
+stream = ExtResource("6_m81v6")
 
 [node name="TopWall" type="Area2D" parent="."]
 metadata/_edit_group_ = true
@@ -103,3 +116,6 @@ theme_override_font_sizes/normal_font_size = 200
 bbcode_enabled = true
 text = "[center][rainbow][wave amp=50 freq=3]PAUSED[/wave][/rainbow][/center]
 "
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_l8wev")
