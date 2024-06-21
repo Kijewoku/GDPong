@@ -1,29 +1,30 @@
-[gd_scene load_steps=18 format=3 uid="uid://d0l3kedy2jy27"]
+[gd_scene load_steps=19 format=3 uid="uid://d0l3kedy2jy27"]
 
 [ext_resource type="Texture2D" uid="uid://d3swedrjt27g2" path="res://assets/Court.png" id="1_klngy"]
 [ext_resource type="Script" path="res://scripts/Ball.gd" id="2_jlvsl"]
 [ext_resource type="Texture2D" uid="uid://drbxstepy6ptw" path="res://assets/Ball.png" id="2_q2vfw"]
-[ext_resource type="Texture2D" uid="uid://ddipyjabs68it" path="res://assets/Paddle.png" id="3_pimu3"]
 [ext_resource type="AudioStream" uid="uid://bodegx0rabwm2" path="res://assets/bounce.mp3" id="3_vrik4"]
 [ext_resource type="AudioStream" uid="uid://cjo8ct0c6q15e" path="res://assets/music.mp3" id="4_l8wev"]
 [ext_resource type="AudioStream" uid="uid://b6j1iccngggfg" path="res://assets/player_score.mp3" id="5_mq4b2"]
 [ext_resource type="Script" path="res://scripts/Player.gd" id="5_t63hc"]
+[ext_resource type="Texture2D" uid="uid://dix8kwsvvks3a" path="res://assets/Player.png" id="6_1bnvr"]
 [ext_resource type="AudioStream" uid="uid://dbelrurbd2v1p" path="res://assets/enemy_score.mp3" id="6_m81v6"]
 [ext_resource type="Script" path="res://scripts/Enemy.gd" id="7_rwkf6"]
 [ext_resource type="Script" path="res://scripts/Rail.gd" id="8_dvfoa"]
+[ext_resource type="Texture2D" uid="uid://bpw3q1arkv0o2" path="res://assets/Enemy.png" id="9_1l36m"]
 [ext_resource type="Script" path="res://scripts/Wall.gd" id="9_d3bcp"]
 [ext_resource type="Script" path="res://scripts/Pause.gd" id="12_ugcab"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mxd7d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vtohn"]
-size = Vector2(30, 202)
+size = Vector2(15, 106)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g1cgc"]
-size = Vector2(1280, 50)
+size = Vector2(1280, 167)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sl6bn"]
-size = Vector2(50, 720)
+size = Vector2(149, 720)
 
 [node name="Node2D" type="Node2D"]
 
@@ -50,23 +51,24 @@ shape = SubResource("RectangleShape2D_mxd7d")
 stream = ExtResource("3_vrik4")
 
 [node name="Player" type="Area2D" parent="." node_paths=PackedStringArray("score_display", "score_sound")]
-position = Vector2(80, 360)
+position = Vector2(140, 360)
 script = ExtResource("5_t63hc")
 score_display = NodePath("../Player Score")
 score_sound = NodePath("AudioStreamPlayer")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
-texture = ExtResource("3_pimu3")
+texture = ExtResource("6_1bnvr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(0.5, 1)
 shape = SubResource("RectangleShape2D_vtohn")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Player"]
 stream = ExtResource("5_mq4b2")
 
 [node name="Enemy" type="Area2D" parent="." node_paths=PackedStringArray("score_display", "score_sound")]
-position = Vector2(1200, 360)
+position = Vector2(1140, 360)
 script = ExtResource("7_rwkf6")
 follow = NodePath("../Ball")
 score_display = NodePath("../Enemy Score")
@@ -74,7 +76,7 @@ score_sound = NodePath("AudioStreamPlayer")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Enemy"]
-texture = ExtResource("3_pimu3")
+texture = ExtResource("9_1l36m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
 shape = SubResource("RectangleShape2D_vtohn")
@@ -87,7 +89,7 @@ script = ExtResource("8_dvfoa")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TopWall"]
-position = Vector2(640, 2.08165e-12)
+position = Vector2(640, 30)
 shape = SubResource("RectangleShape2D_g1cgc")
 
 [node name="BottomWall" type="Area2D" parent="."]
@@ -96,7 +98,7 @@ BounceDirection = -1
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BottomWall"]
-position = Vector2(640, 745)
+position = Vector2(640, 716.5)
 shape = SubResource("RectangleShape2D_g1cgc")
 
 [node name="LeftWall" type="Area2D" parent="."]
@@ -105,7 +107,7 @@ BallResetDirection = Vector2(1, 2.08165e-12)
 ScorerPath = NodePath("../Enemy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
-position = Vector2(2.08165e-12, 360)
+position = Vector2(33, 360)
 shape = SubResource("RectangleShape2D_sl6bn")
 
 [node name="RightWall" type="Area2D" parent="."]
@@ -114,7 +116,7 @@ BallResetDirection = Vector2(-1, 2.08165e-12)
 ScorerPath = NodePath("../Player")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
-position = Vector2(1280, 360)
+position = Vector2(1263.5, 360)
 shape = SubResource("RectangleShape2D_sl6bn")
 
 [node name="Player Score" type="Label" parent="."]
