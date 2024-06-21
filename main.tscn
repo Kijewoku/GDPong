@@ -21,10 +21,10 @@
 size = Vector2(15, 106)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g1cgc"]
-size = Vector2(1280, 167)
+size = Vector2(1280, 152.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sl6bn"]
-size = Vector2(149, 720)
+size = Vector2(140.75, 720)
 
 [node name="Node2D" type="Node2D"]
 
@@ -89,7 +89,7 @@ script = ExtResource("8_dvfoa")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TopWall"]
-position = Vector2(640, 30)
+position = Vector2(640, 8.75)
 shape = SubResource("RectangleShape2D_g1cgc")
 
 [node name="BottomWall" type="Area2D" parent="."]
@@ -98,7 +98,7 @@ BounceDirection = -1
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BottomWall"]
-position = Vector2(640, 716.5)
+position = Vector2(640, 709.375)
 shape = SubResource("RectangleShape2D_g1cgc")
 
 [node name="LeftWall" type="Area2D" parent="."]
@@ -107,7 +107,7 @@ BallResetDirection = Vector2(1, 2.08165e-12)
 ScorerPath = NodePath("../Enemy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
-position = Vector2(33, 360)
+position = Vector2(20.75, 360)
 shape = SubResource("RectangleShape2D_sl6bn")
 
 [node name="RightWall" type="Area2D" parent="."]
@@ -116,7 +116,7 @@ BallResetDirection = Vector2(-1, 2.08165e-12)
 ScorerPath = NodePath("../Player")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
-position = Vector2(1263.5, 360)
+position = Vector2(1259.38, 360)
 shape = SubResource("RectangleShape2D_sl6bn")
 
 [node name="Player Score" type="Label" parent="."]
