@@ -1,8 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://d0l3kedy2jy27"]
+[gd_scene load_steps=24 format=3 uid="uid://d0l3kedy2jy27"]
 
 [ext_resource type="Texture2D" uid="uid://d3swedrjt27g2" path="res://assets/Court.png" id="1_klngy"]
 [ext_resource type="Script" path="res://scripts/Ball.gd" id="2_jlvsl"]
 [ext_resource type="Texture2D" uid="uid://drbxstepy6ptw" path="res://assets/Ball.png" id="2_q2vfw"]
+[ext_resource type="Shader" path="res://squish-sprite.gdshader" id="3_lh5by"]
 [ext_resource type="AudioStream" uid="uid://bodegx0rabwm2" path="res://assets/bounce.mp3" id="3_vrik4"]
 [ext_resource type="AudioStream" uid="uid://cjo8ct0c6q15e" path="res://assets/music.mp3" id="4_l8wev"]
 [ext_resource type="AudioStream" uid="uid://b6j1iccngggfg" path="res://assets/player_score.mp3" id="5_mq4b2"]
@@ -14,6 +15,9 @@
 [ext_resource type="Texture2D" uid="uid://bpw3q1arkv0o2" path="res://assets/Enemy.png" id="9_1l36m"]
 [ext_resource type="Script" path="res://scripts/Wall.gd" id="9_d3bcp"]
 [ext_resource type="Script" path="res://scripts/Pause.gd" id="12_ugcab"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h6uy4"]
+shader = ExtResource("3_lh5by")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mxd7d"]
 
@@ -46,6 +50,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_fqrxg"]
 resource_name = "bounce"
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -103,6 +108,7 @@ metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Ball"]
 self_modulate = Color(0.948989, 0, 0.108832, 1)
+material = SubResource("ShaderMaterial_h6uy4")
 scale = Vector2(2, 0.5)
 texture = ExtResource("2_q2vfw")
 

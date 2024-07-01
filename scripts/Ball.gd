@@ -11,8 +11,13 @@ var animation_player: AnimationPlayer
 const STARTING_POINT = Vector2(640, 360)
 
 func _ready():
-	bounce_sound = $AudioStreamPlayer
 	animation_player = $AnimationPlayer
+	if animation_player.has_animation("bounce"):
+		
+		var bounceAnimation = animation_player.get_animation("bounce")
+		bounceAnimation.length = 0.425
+
+	bounce_sound = $AudioStreamPlayer
 	$Sprite2D.scale = default_scale
 	$Sprite2D.self_modulate = default_color
 
